@@ -4,9 +4,11 @@ import kojogame.koutachan.commands.cmdSponges
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
+import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.server.BroadcastMessageEvent
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -27,7 +29,7 @@ class KojoGame : JavaPlugin(), Listener {
     }
 
     @EventHandler
-    fun onPlace(e: BlockPlaceEvent) {
+    fun BlockPlaceEvent(e: BlockPlaceEvent) {
         if (e.player.getGameMode() == GameMode.CREATIVE) {
         } else {
             e.setCancelled(true) //キャンセル
@@ -35,7 +37,7 @@ class KojoGame : JavaPlugin(), Listener {
     }
 
     @EventHandler
-    fun onBreak(e: BlockBreakEvent) { //雑でごり押しのコード
+    fun BlockBreakEvent(e: BlockBreakEvent) { //雑でごり押しのコード
         if (e.player.getGameMode() == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
@@ -53,5 +55,10 @@ class KojoGame : JavaPlugin(), Listener {
             } else
                 e.setCancelled(true)
         }
+    }
+    @EventHandler (priority = EventPriority.HIGH)
+    fun onFoodLevelChange(e: FoodLevelChangeEvent) {
+        e.setCancelled(true)
+        e.setFoodLevel(20)
     }
 }
