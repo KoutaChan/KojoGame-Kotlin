@@ -1,5 +1,6 @@
 package kojogame.koutachan
 
+import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -14,11 +15,13 @@ import org.bukkit.plugin.java.JavaPlugin
 
 
 class KojoGame : JavaPlugin(), Listener {
+    val GameStarted = false
+
     override fun onEnable() {
         // Plugin startup logic
         //getCommand("setsponges").executor = cmdSponges
         server.pluginManager.registerEvents(this, this)
-        val config = getConfig() //config.options().copyDefaults(true)
+        val config = config //config.options().copyDefaults(true)
         saveDefaultConfig()
     }
 
@@ -28,35 +31,43 @@ class KojoGame : JavaPlugin(), Listener {
 
     @EventHandler
     fun BlockPlaceEvent(e: BlockPlaceEvent) {
-        if (e.player.getGameMode() == GameMode.CREATIVE) {
+        if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
-            e.setCancelled(true) //キャンセル
+            e.isCancelled = true //キャンセル
         }
     }
 
     @EventHandler
     fun BlockBreakEvent(e: BlockBreakEvent) { //雑でごり押しのコード
-        if (e.player.getGameMode() == GameMode.CREATIVE) {
+        if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
                 if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
                     e.player.sendMessage("[1]")
-                    e.setCancelled(false) //ごり押しするためにfalse
-                }else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
+                    e.isCancelled = false //ごり押しするためにfalse
+                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
                     e.player.sendMessage("[2]")
-                    e.setCancelled(false)
-                }else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
+                    e.isCancelled = false
+                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
                     e.player.sendMessage("[3]")
-                    e.setCancelled(false)
+                    e.isCancelled = false
                 } else
-                    e.setCancelled(true)
+                    e.isCancelled = true
             } else
-                e.setCancelled(true)
+                e.isCancelled = true
         }
     }
-    @EventHandler (priority = EventPriority.HIGH)
+
+    @EventHandler(priority = EventPriority.HIGH)
     fun onFoodLevelChange(e: FoodLevelChangeEvent) {
-        e.setCancelled(true)
-        e.setFoodLevel(20)
+        e.isCancelled = true
+        e.foodLevel = 20
+    }
+
+    private fun GameStarted() {
+        if (GameStarted == false) {
+            Bukkit.broadcastMessage("§e10秒後ゲームを開始します")
+        }
     }
 }
+
