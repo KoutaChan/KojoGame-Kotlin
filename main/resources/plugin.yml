@@ -3,8 +3,8 @@ version: ${project.version}
 main: kojogame.koutachan.KojoGame
 commands:
   start:
-    permission: "kojogame.start"
-    permission-message: "§cあなたにはこのコマンドを実行する権限がありません！"
+    permission: kojogame.start
+    permission-message: §cあなたにはこのコマンドを実行する権限がありません！
   setsponges:
-    permission: "kojogame.setsponges"
-    permission-message: "§cあなたにはこのコマンドを実行する権限がありません！"
+    permission: kojogame.setsponges
+    permission-message: §cあなたにはこのコマンドを実行する権限がありません！

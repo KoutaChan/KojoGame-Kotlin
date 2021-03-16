@@ -42,13 +42,13 @@ class KojoGame : JavaPlugin(),Listener {
                 if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
                     e.player.sendMessage("§f鉄のスポンジが破壊されました")
                     e.isCancelled = false //ごり押しするためにfalse
-                }else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
+                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
                     e.player.sendMessage("§6金のスポンジが破壊されました")
                     e.isCancelled = false
-                }else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
+                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
                     e.player.sendMessage("§bダイヤのスポンジが破壊されました")
                     e.isCancelled = false
-                }else
+                } else
                     e.isCancelled = true
             } else
                 e.isCancelled = true
@@ -76,26 +76,59 @@ class KojoGame : JavaPlugin(),Listener {
             if (sender is Player) {
                 if (args?.isNotEmpty()!!) {
                     if (args?.get(0) == "iron") {
-                        val ironX = sender.getTargetBlock(null, 100).x
-                        val ironY = sender.getTargetBlock(null, 100).y
-                        val ironZ = sender.getTargetBlock(null, 100).z
-                        config.set("iron", listOf(ironX, ironY, ironZ))
+                        config.set(
+                            "iron",
+                            listOf(
+                                sender.getTargetBlock(null, 100).x,
+                                sender.getTargetBlock(null, 100).y,
+                                sender.getTargetBlock(null, 100).z
+                            )
+                        )
                         saveConfig()
-                        sender.sendMessage("§f保存しました！\nX:$ironX \nY:$ironY \nZ:$ironZ")
+                        sender.sendMessage(
+                            "§f保存しました！\nX:${
+                                sender.getTargetBlock(
+                                    null,
+                                    100
+                                ).x
+                            } \nY:${sender.getTargetBlock(null, 100).y} \nZ:${sender.getTargetBlock(null, 100).z}"
+                        )
                     } else if (args?.get(0) == "gold") {
-                        val goldX = sender.getTargetBlock(null, 100).x
-                        val goldY = sender.getTargetBlock(null, 100).y
-                        val goldZ = sender.getTargetBlock(null, 100).z
-                        config.set("gold", listOf(goldX, goldY, goldZ))
+                        config.set(
+                            "gold",
+                            listOf(
+                                sender.getTargetBlock(null, 100).x,
+                                sender.getTargetBlock(null, 100).y,
+                                sender.getTargetBlock(null, 100).z
+                            )
+                        )
                         saveConfig()
-                        sender.sendMessage("§6保存しました！\nX:$goldX \nY:$goldY \nZ:$goldZ")
+                        sender.sendMessage(
+                            "§6保存しました！\nX:${
+                                sender.getTargetBlock(
+                                    null,
+                                    100
+                                ).x
+                            } \nY:${sender.getTargetBlock(null, 100).y} \nZ:${sender.getTargetBlock(null, 100).z}"
+                        )
                     } else if (args?.get(0) == "diamond") {
-                        val diamondX = sender.getTargetBlock(null, 100).x
-                        val diamondY = sender.getTargetBlock(null, 100).y
-                        val diamondZ = sender.getTargetBlock(null, 100).z
-                        config.set("diamond", listOf(diamondX, diamondY, diamondZ))
+                        config.set(
+                            "diamond",
+                            listOf(
+                                sender.getTargetBlock(null, 100).x,
+                                sender.getTargetBlock(null, 100).y,
+                                sender.getTargetBlock(null, 100).z
+                            )
+                        )
                         saveConfig()
-                        sender.sendMessage("§b保存しました！\nX:$diamondX \nY:$diamondY \nZ:$diamondZ")
+                        sender.sendMessage(
+                            "§b保存しました！\nX:${
+                                sender.getTargetBlock(
+                                    null,
+                                    100
+                                ).x
+                            } \nY:${sender.getTargetBlock(null, 100).y} \nZ:${sender.getTargetBlock(null, 100).z}"
+                        )
                     } else sender.sendMessage("§c使い方: /setsponges [iron / gold / diamond]")
                 } else sender.sendMessage("§c使い方: /setsponges [iron / gold / diamond]")
             } else sender?.sendMessage("§cYou can't execute this command from console!")
