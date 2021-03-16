@@ -1,8 +1,10 @@
 package kojogame.koutachan
 
-import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Material
+import org.bukkit.command.Command
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -12,18 +14,13 @@ import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.plugin.java.JavaPlugin
 
 
-
-
-class KojoGame : JavaPlugin(), Listener {
-    val GameStarted = false
-
+class KojoGame : JavaPlugin(),Listener {
     override fun onEnable() {
         // Plugin startup logic
-        //getCommand("setsponges").executor = cmdSponges
         server.pluginManager.registerEvents(this, this)
-        val config = config //config.options().copyDefaults(true)
         saveDefaultConfig()
     }
+
 
     override fun onDisable() {
         // Plugin shutdown logic
@@ -64,10 +61,47 @@ class KojoGame : JavaPlugin(), Listener {
         e.foodLevel = 20
     }
 
-    private fun GameStarted() {
-        if (GameStarted == false) {
-            Bukkit.broadcastMessage("§e10秒後ゲームを開始します")
+    fun GameStarted() {
+        //if (GameStarted == false) {
+        logger.info("いぇえええええええええい")
+        //}
+    }
+
+    override fun onCommand(
+        sender: CommandSender?,
+        command: Command?,
+        label: String?,
+        args: Array<out String>?
+    ): Boolean {
+        if (command?.getName().equals("setsponges")) {
+            if (sender is Player) {
+                if (args?.isNotEmpty()!!) {
+                    if (args?.get(0) == "iron") {
+                        val ironX = sender.getTargetBlock(null, 100).x
+                        val ironY = sender.getTargetBlock(null, 100).y
+                        val ironZ = sender.getTargetBlock(null, 100).z
+                        config.set("iron", listOf(ironX, ironY, ironZ))
+                        saveConfig()
+                        sender.sendMessage("§b保存しました！\nX:$ironX \nY:$ironY \nZ:$ironZ")
+                    } else if (args?.get(0) == "gold") {
+                        val goldX = sender.getTargetBlock(null, 100).x
+                        val goldY = sender.getTargetBlock(null, 100).y
+                        val goldZ = sender.getTargetBlock(null, 100).z
+                        config.set("gold", listOf(goldX, goldY, goldZ))
+                        saveConfig()
+                        sender.sendMessage("§b保存しました！\nX:$goldX \nY:$goldY \nZ:$goldZ")
+                    } else if (args?.get(0) == "diamond") {
+                        val diamondX = sender.getTargetBlock(null, 100).x
+                        val diamondY = sender.getTargetBlock(null, 100).y
+                        val diamondZ = sender.getTargetBlock(null, 100).z
+                        config.set("diamond", listOf(diamondX, diamondY, diamondZ))
+                        saveConfig()
+                        sender.sendMessage("§b保存しました！\nX:$diamondX \nY:$diamondY \nZ:$diamondZ")
+                    } else sender.sendMessage("§c使い方: /setsponges [iron / gold / diamond]")
+                } else sender.sendMessage("§c使い方: /setsponges [iron / gold / diamond]")
+            } else sender?.sendMessage("§cYou can't execute this command from console!")
         }
+        return true
     }
 }
 

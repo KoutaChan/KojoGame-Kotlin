@@ -2,5 +2,7 @@ name: KojoGame
 version: ${project.version}
 main: kojogame.koutachan.KojoGame
 commands:
+  start:
+    permission: "kojogame.start"
   setsponges:
-    permission: "kojogame.*"
+    permission: "kojogame.setsponges"
