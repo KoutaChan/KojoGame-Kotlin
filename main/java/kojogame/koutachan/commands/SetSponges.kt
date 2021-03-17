@@ -14,9 +14,9 @@ object cmdSponges : CommandExecutor {
             if (args?.isNotEmpty()!!) {
                 val File = File("plugins/KojoGame/config.yml")
                 val config = YamlConfiguration.loadConfiguration(File)
-                val TargetBlockX = sender.getTargetBlock(null,5).getLocation().blockX //valで保存しなくてもいいのだが、見にくくなるためvalで保存
-                val TargetBlockY = sender.getTargetBlock(null,5).getLocation().blockY
-                val TargetBlockZ = sender.getTargetBlock(null,5).getLocation().blockZ
+                val TargetBlockX = sender.getTargetBlock(null,15).getLocation().blockX //valで保存しなくてもいいのだが、見にくくなるためvalで保存
+                val TargetBlockY = sender.getTargetBlock(null,15).getLocation().blockY
+                val TargetBlockZ = sender.getTargetBlock(null,15).getLocation().blockZ
                 if (args[0] == "iron") {
                     config.set("iron",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
                     config.save(File)
