@@ -6,7 +6,7 @@
 
     <groupId>kojogame.koutachan</groupId>
     <artifactId>KojoGame</artifactId>
-    <version>beta-0.1</version>
+    <version>beta-0.2</version>
     <packaging>jar</packaging>
 
     <name>KojoGame</name>
