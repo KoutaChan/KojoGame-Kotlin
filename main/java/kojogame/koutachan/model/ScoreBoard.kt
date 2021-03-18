@@ -1,5 +1,6 @@
 package kojogame.koutachan.model
 
+
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -18,16 +19,12 @@ object ScoreBoard : Listener {
         e.player.sendMessage("テストだよ")
     }
 
-
     fun scoreboard(player: Player) {
-        Bukkit.getScoreboardManager().newScoreboard.registerNewObjective("kojogame", "dummy")
-        val obj = Bukkit.getScoreboardManager().newScoreboard.registerNewObjective("kojogame", "dummy")
+        player.scoreboard?.getObjective("${player.displayName}")?.unregister()
+        val obj = player.scoreboard.registerNewObjective("${player.displayName}","dummy") //プレイヤーごとに作ったほうがいいって聞いた
         obj.setDisplaySlot(SIDEBAR)
-        val sidebar10 = obj.getScore("Kouta1212")
-        sidebar10.setScore(10)
-        //Bukkit.getScoreboardManager().newScoreboard.getObjective("kojogame").setDisplayName("${ChatColor.YELLOW}+攻城戦")
-        //Bukkit.getScoreboardManager().newScoreboard.getObjective("kojogame").getScore("=================").setScore(10)
-        //obj.setDisplayName("${ChatColor.YELLOW}+攻城戦")//(${Bukkit.getOnlinePlayers().size})
+        obj.setDisplayName("${ChatColor.YELLOW}KojoGame (${Bukkit.getOnlinePlayers().size})")
+        obj.getScore("§m§l---------------------").setScore(10)
         player.sendMessage("DEBUG: TEST / $obj")
     }
 }

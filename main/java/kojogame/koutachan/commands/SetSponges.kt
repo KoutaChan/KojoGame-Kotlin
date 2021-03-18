@@ -19,7 +19,7 @@ object cmdSponges : CommandExecutor {
                 val TargetBlockZ = sender.getTargetBlock(null,15).getLocation().blockZ
                 if (args[0] == "iron") {
                     config.set("iron",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
-                    config.save(File)
+                    config.save(File) //もしかして:ノリで追加したけどいらない？
                     sender.sendMessage("${ChatColor.WHITE}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ")
                 } else {
                     if (args[0] == "gold") {
@@ -32,7 +32,7 @@ object cmdSponges : CommandExecutor {
                             config.save(File)
                             sender.sendMessage("${ChatColor.AQUA}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ ${config.getString("iron")})")
                         } else {
-                            sender.sendMessage("${ChatColor.RED}使い方: /setsponges [iron / gold / diamond] \n§bdebug: {$args[0]}")
+                            sender.sendMessage("${ChatColor.RED}使い方: /setsponges [iron / gold / diamond]")
                         }
                     }
                 }

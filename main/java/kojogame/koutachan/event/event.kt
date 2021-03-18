@@ -12,6 +12,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent
 import java.io.File
 
 object event : Listener {
+    val File = File("plugins/KojoGame/config.yml")
 
     @EventHandler
     fun BlockPlaceEvent(e: BlockPlaceEvent) {
@@ -26,7 +27,6 @@ object event : Listener {
         if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
-                val File = File("plugins/KojoGame/config.yml")
                 val config = YamlConfiguration.loadConfiguration(File)
                 if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
                     e.player.sendMessage("§f鉄のスポンジが破壊されました")
