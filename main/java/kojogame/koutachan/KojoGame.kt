@@ -2,7 +2,7 @@ package kojogame.koutachan
 
 import kojogame.koutachan.commands.cmdSponges
 import kojogame.koutachan.event.event
-import kojogame.koutachan.model.ScoreBoard
+import kojogame.koutachan.model.scoreboard
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -11,7 +11,7 @@ class KojoGame : JavaPlugin(),Listener {
         // Plugin startup logic
         getCommand("setsponges").executor = cmdSponges
         server.pluginManager.registerEvents(event,this)
-        server.pluginManager.registerEvents(ScoreBoard,this)
+        server.pluginManager.registerEvents(scoreboard,this)
         saveDefaultConfig()
     }
 
