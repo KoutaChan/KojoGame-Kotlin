@@ -3,12 +3,14 @@ package kojogame.koutachan.event
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.FoodLevelChangeEvent
+import org.bukkit.event.inventory.CraftItemEvent
 import java.io.File
 
 object event : Listener {
@@ -47,5 +49,10 @@ object event : Listener {
     fun onFoodLevelChange(e: FoodLevelChangeEvent) {
         e.isCancelled = true
         e.foodLevel = 20
+    }
+
+    @EventHandler
+    fun CraftItemEvent(e: CraftItemEvent) {
+        e.isCancelled = true
     }
 }
