@@ -1,5 +1,6 @@
 package kojogame.koutachan
 
+import kojogame.koutachan.commands.SimpleGameMode
 import kojogame.koutachan.commands.cmdSponges
 import kojogame.koutachan.event.event
 import kojogame.koutachan.model.scoreboard
@@ -13,6 +14,7 @@ class KojoGame : JavaPlugin() {
         // Plugin startup logic
         plugin = this
         getCommand("setsponges").executor = cmdSponges
+        getCommand("gm").executor = SimpleGameMode
         server.pluginManager.registerEvents(event, this)
         server.pluginManager.registerEvents(scoreboard, this)
         saveDefaultConfig()
@@ -24,6 +26,3 @@ class KojoGame : JavaPlugin() {
         // Plugin shutdown logic
     }
 }
-
-
-
