@@ -11,3 +11,6 @@ commands:
   gm:
     permission: kojogame.GM
     permission-message: §cあなたにはこのコマンドを実行する権限がありません！
+  debug:
+    permission: kojogame.debug
+    permission-message: §cあなたにはこのコマンドを実行する権限がありません！
