@@ -19,7 +19,6 @@ class KojoGame : JavaPlugin() {
         getCommand("gm").executor = SimpleGameMode
         server.pluginManager.registerEvents(event, this)
         server.pluginManager.registerEvents(scoreboard, this)
-        server.pluginManager.registerEvents(scoreboard, this)
         saveDefaultConfig()
 
     }
