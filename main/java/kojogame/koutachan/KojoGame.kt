@@ -18,7 +18,7 @@ class KojoGame : JavaPlugin() {
         getCommand("setsponges").executor = cmdSponges
         getCommand("gm").executor = SimpleGameMode
         server.pluginManager.registerEvents(event, this)
-        ScoreBoardUpdate() //わざわざmodelのほうで書くのもなぁ...
+        ScoreBoardUpdate()
         saveDefaultConfig()
 
     }
