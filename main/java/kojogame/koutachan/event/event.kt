@@ -1,5 +1,9 @@
 package kojogame.koutachan.event
 
+import kojogame.koutachan.util.DiamondSponges
+import kojogame.koutachan.util.GoldSponges
+import kojogame.koutachan.util.IronSponges
+import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
@@ -29,13 +33,16 @@ object event : Listener {
             if (e.block.type == Material.SPONGE) {
                 val config = YamlConfiguration.loadConfiguration(File)
                 if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
-                    e.player.sendMessage("§f鉄のスポンジが破壊されました")
+                    Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
+                    IronSponges(true)
                     e.isCancelled = false //ごり押しするためにfalse
                 } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
-                    e.player.sendMessage("§6金のスポンジが破壊されました")
+                    Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
+                    GoldSponges(true)
                     e.isCancelled = false
                 } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
-                    e.player.sendMessage("§bダイヤのスポンジが破壊されました")
+                    Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
+                    DiamondSponges(true)
                     e.isCancelled = false
                 } else
                     e.isCancelled = true

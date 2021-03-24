@@ -30,7 +30,7 @@ object cmdSponges : CommandExecutor {
                         if (args[0] == "diamond") {
                             config.set("diamond",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
                             config.save(File)
-                            sender.sendMessage("${ChatColor.AQUA}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ)")
+                            sender.sendMessage("${ChatColor.AQUA}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ")
                         } else {
                             sender.sendMessage("${ChatColor.RED}使い方: /setsponges [iron / gold / diamond]")
                         }
