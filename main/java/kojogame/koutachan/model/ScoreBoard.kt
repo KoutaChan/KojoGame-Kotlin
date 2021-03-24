@@ -20,17 +20,20 @@ object scoreboard : Listener {
             val time = LocalDateTime.now()
             obj.setDisplaySlot(DisplaySlot.SIDEBAR)
             obj.setDisplayName("${ChatColor.YELLOW}[ Kojo Game (${Bukkit.getOnlinePlayers().size}) ]")
-            obj.getScore("§7${time.year}/${time.month.value}/${time.dayOfMonth} §8EventServer").setScore(10) //${time.hour}:${time.minute}:${time.second}
+            obj.getScore("§7${time.year}/${time.month.value}/${time.dayOfMonth} §80.2β").setScore(10) //${time.hour}:${time.minute}:${time.second}
             obj.getScore("").setScore(9)
-            if (kojogame.koutachan.util.GameState.GameState == 0) {
-                obj.getScore(" » ゲーム待機中").setScore(8)
-            }else if (kojogame.koutachan.util.GameState.GameState == 1) {
-                obj.getScore(" » ゲーム開始中").setScore(8)
-            }else if (kojogame.koutachan.util.GameState.GameState == 2) {
-                obj.getScore(" » ゲーム中").setScore(8)
-            }else if (kojogame.koutachan.util.GameState.GameState == 3) {
-                obj.getScore(" » ゲーム終了").setScore(8)
-        }
+            GameStateUpdate() //Line 8
     }, 0, 20)
+    }
+    fun GameStateUpdate() {
+        if (kojogame.koutachan.util.GameState.GameState == 0) {
+            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム待機中").setScore(8)
+        } else if (kojogame.koutachan.util.GameState.GameState == 1) {
+            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム開始中").setScore(8)
+        } else if (kojogame.koutachan.util.GameState.GameState == 2) {
+            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム中").setScore(8)
+        } else if (kojogame.koutachan.util.GameState.GameState == 3) {
+            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム終了").setScore(8)
+        }
     }
 }

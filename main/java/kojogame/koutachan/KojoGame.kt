@@ -4,7 +4,8 @@ import kojogame.koutachan.commands.SimpleGameMode
 import kojogame.koutachan.commands.cmdSponges
 import kojogame.koutachan.commands.debug
 import kojogame.koutachan.event.event
-import kojogame.koutachan.model.scoreboard.ScoreBoardUpdate
+import kojogame.koutachan.model.scoreboard
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class KojoGame : JavaPlugin() {
@@ -18,7 +19,7 @@ class KojoGame : JavaPlugin() {
         getCommand("setsponges").executor = cmdSponges
         getCommand("gm").executor = SimpleGameMode
         server.pluginManager.registerEvents(event, this)
-        ScoreBoardUpdate()
+        scoreboard.ScoreBoardUpdate()
         saveDefaultConfig()
 
     }
