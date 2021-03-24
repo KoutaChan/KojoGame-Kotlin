@@ -1,5 +1,4 @@
 package kojogame.koutachan.commands
 
-class Start {
-
+class SetSpawn {
 }

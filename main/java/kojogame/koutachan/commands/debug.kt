@@ -15,9 +15,17 @@ object debug : CommandExecutor {
         if (args?.isNotEmpty()!!) {
             if (args[0] == "0") {
                 sender?.sendMessage("${GameState.GameState}")
-                return true
-            }else if (args[0] == "1") {
+            } else if (args[0] == "1") {
+                GameState(0)
+                sender?.sendMessage(":ok_hand:")
+            } else if (args[0] == "2") {
                 GameState(1)
+                sender?.sendMessage(":ok_hand:")
+            } else if (args[0] == "3") {
+                GameState(2)
+                sender?.sendMessage(":ok_hand:")
+            } else if (args[0] == "4") {
+                GameState(3)
                 sender?.sendMessage(":ok_hand:")
             }
         }
