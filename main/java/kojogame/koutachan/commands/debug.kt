@@ -1,5 +1,6 @@
 package kojogame.koutachan.commands
 
+import kojogame.koutachan.model.BlueWin
 import kojogame.koutachan.util.GameState
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -27,8 +28,10 @@ object debug : CommandExecutor {
             } else if (args[0] == "4") {
                 GameState(3)
                 sender?.sendMessage(":ok_hand:")
+            } else if (args[0] == "5") {
+                BlueWin()
             }
         }
-    return true
+        return true
     }
 }

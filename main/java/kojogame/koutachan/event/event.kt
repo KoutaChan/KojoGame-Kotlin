@@ -1,9 +1,7 @@
 package kojogame.koutachan.event
 
-import kojogame.koutachan.util.DiamondSponges
-import kojogame.koutachan.util.GameState
-import kojogame.koutachan.util.GoldSponges
-import kojogame.koutachan.util.IronSponges
+import kojogame.koutachan.model.BlueWinChecker
+import kojogame.koutachan.util.*
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Material
@@ -39,14 +37,17 @@ object event : Listener {
                     if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
                         Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
                         IronSponges(true)
+                        BlueWinChecker()
                         e.isCancelled = false //ごり押しするためにfalse
                     } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
                         Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
                         GoldSponges(true)
+                        BlueWinChecker()
                         e.isCancelled = false
                     } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
                         Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
                         DiamondSponges(true)
+                        BlueWinChecker()
                         e.isCancelled = false
                     } else
                         e.isCancelled = true

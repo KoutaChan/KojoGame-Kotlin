@@ -22,12 +22,16 @@ object scoreboard : Listener {
             obj.setDisplayName("${ChatColor.YELLOW}[ Kojo Game (${Bukkit.getOnlinePlayers().size}) ]")
             obj.getScore("§7${time.year}/${time.month.value}/${time.dayOfMonth} §80.2β").setScore(10) //${time.hour}:${time.minute}:${time.second}
             obj.getScore("").setScore(9)
-            obj.getScore("-----------------------------------").setScore(7)
+            obj.getScore("${ChatColor.BOLD}").setScore(7)
+            obj.getScore("${ChatColor.RESET}").setScore(3)
+            obj.getScore(" §c赤チーム ➤ 0").setScore(2)
+            obj.getScore(" §9青チーム ➤ 0").setScore(1)
+            obj.getScore("${ChatColor.UNDERLINE}").setScore(0)
             GameStateUpdate() //Line 8
             IronUpdate() //Line 6
             GoldUpdate() //Line 5
             DiamondUpdate() //Line 4
-    }, 0, 20)
+    }, 0, 10) //多分20だと秒数が表示されないので
     }
     fun GameStateUpdate() {
         if (kojogame.koutachan.util.GameState.GameState == 0) {
