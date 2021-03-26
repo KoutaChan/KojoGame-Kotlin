@@ -12,6 +12,7 @@ fun Timer(timer: Int) {
                 kojogame.koutachan.util.Timer(Timer)
             } else {
                 cancel()
+                RedWin()
             }
         }
     }.runTaskTimer(plugin, 0, 20)

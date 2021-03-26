@@ -1,6 +1,7 @@
 package kojogame.koutachan.model
 
 import kojogame.koutachan.util.DiamondSponges
+import kojogame.koutachan.util.GameState
 import kojogame.koutachan.util.GoldSponges
 import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
@@ -19,6 +20,7 @@ fun RedWin() {
     IronSponges(false)
     GoldSponges(false)
     DiamondSponges(false)
+    GameState(2)
 }
 
 fun BlueWinChecker() {
