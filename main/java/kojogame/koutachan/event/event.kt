@@ -1,16 +1,19 @@
 package kojogame.koutachan.event
 
 import kojogame.koutachan.util.DiamondSponges
+import kojogame.koutachan.util.GameState
 import kojogame.koutachan.util.GoldSponges
 import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.inventory.CraftItemEvent
 import java.io.File
@@ -59,5 +62,14 @@ object event : Listener {
     @EventHandler
     fun CraftItemEvent(e: CraftItemEvent) {
         e.isCancelled = true
+    }
+
+    @EventHandler
+    fun EntityDamageEvent(e: EntityDamageEvent) {
+        if (GameState.GameState == 0) {
+            if (e.entityType == EntityType.PLAYER) {
+                e.isCancelled = true
+            }
+        }
     }
 }
