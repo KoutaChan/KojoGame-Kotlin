@@ -34,19 +34,22 @@ object event : Listener {
         if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
-                val config = YamlConfiguration.loadConfiguration(File)
-                if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
-                    Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
-                    IronSponges(true)
-                    e.isCancelled = false //ごり押しするためにfalse
-                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
-                    Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
-                    GoldSponges(true)
-                    e.isCancelled = false
-                } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
-                    Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
-                    DiamondSponges(true)
-                    e.isCancelled = false
+                if (GameState.GameState == 2) {
+                    val config = YamlConfiguration.loadConfiguration(File)
+                    if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
+                        Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
+                        IronSponges(true)
+                        e.isCancelled = false //ごり押しするためにfalse
+                    } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
+                        Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
+                        GoldSponges(true)
+                        e.isCancelled = false
+                    } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
+                        Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
+                        DiamondSponges(true)
+                        e.isCancelled = false
+                    } else
+                        e.isCancelled = true
                 } else
                     e.isCancelled = true
             } else
@@ -66,8 +69,8 @@ object event : Listener {
 
     @EventHandler
     fun EntityDamageEvent(e: EntityDamageEvent) {
-        if (GameState.GameState == 0) {
-            if (e.entityType == EntityType.PLAYER) {
+        if (e.entityType == EntityType.PLAYER) {
+            if (GameState.GameState == 0) {
                 e.isCancelled = true
             }
         }
