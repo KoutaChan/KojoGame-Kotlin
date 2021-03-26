@@ -39,7 +39,7 @@ object scoreboard : Listener {
         } else if (kojogame.koutachan.util.GameState.GameState == 1) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム開始中").setScore(8)
         } else if (kojogame.koutachan.util.GameState.GameState == 2) {
-            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム中").setScore(8)
+            Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" 残り時間 » ${kojogame.koutachan.util.Timer.Timer}秒").setScore(8)
         } else if (kojogame.koutachan.util.GameState.GameState == 3) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム終了").setScore(8)
         }

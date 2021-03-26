@@ -14,3 +14,14 @@ class GameState(state: Int) {
         //3 = ゲーム終了
     }
 }
+
+class Timer(timer: Int) {
+
+    init {
+        Timer = timer
+    }
+
+    companion object {
+        var Timer: Int = 0
+    }
+}

@@ -1,6 +1,9 @@
 package kojogame.koutachan
 
-import kojogame.koutachan.commands.*
+import kojogame.koutachan.commands.SetSpawn
+import kojogame.koutachan.commands.SimpleGameMode
+import kojogame.koutachan.commands.cmdSponges
+import kojogame.koutachan.commands.debug
 import kojogame.koutachan.event.event
 import kojogame.koutachan.model.scoreboard
 import org.bukkit.plugin.java.JavaPlugin
@@ -19,7 +22,6 @@ class KojoGame : JavaPlugin() {
         server.pluginManager.registerEvents(event, this)
         scoreboard.ScoreBoardUpdate()
         saveDefaultConfig()
-
     }
 
 

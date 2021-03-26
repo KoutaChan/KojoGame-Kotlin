@@ -1,6 +1,8 @@
 package kojogame.koutachan.commands
 
 import kojogame.koutachan.model.BlueWin
+import kojogame.koutachan.model.RedWin
+import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -30,6 +32,10 @@ object debug : CommandExecutor {
                 sender?.sendMessage(":ok_hand:")
             } else if (args[0] == "5") {
                 BlueWin()
+            } else if (args[0] == "6") {
+                RedWin()
+            } else if (args[0] == "7") {
+                Timer(60)
             }
         }
         return true
