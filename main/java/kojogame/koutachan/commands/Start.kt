@@ -25,14 +25,12 @@ object Start : CommandExecutor {
                     override fun run() {
                         if (0 < Timer) {
                             Timer--
-                            if (Timer == 10) {
-                                Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
-                            } else {
-                                Bukkit.broadcastMessage("§lゲームは開始されました！")
-                                GameState(2)
-                                Timer(600)
-                                cancel()
-                            }
+                            Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
+                        } else {
+                            Bukkit.broadcastMessage("§lゲームは開始されました！")
+                            GameState(2)
+                            Timer(600)
+                            cancel()
                         }
                     }
                 }.runTaskTimer(KojoGame.plugin, 0, 20)
