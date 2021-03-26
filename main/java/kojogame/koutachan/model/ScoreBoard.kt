@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 
 object scoreboard : Listener {
 
-    fun ScoreBoardUpdate() {
+    fun ScoreBoardUpdate() { //多分プレイヤーごとにスコアボードは使わないから1個だけの対応でOK
         Bukkit.getScheduler().runTaskTimer(plugin, Runnable {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame")?.unregister()
             Bukkit.getScoreboardManager().mainScoreboard.registerNewObjective("KojoGame", "dummy")

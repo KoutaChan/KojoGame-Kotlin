@@ -8,6 +8,9 @@ commands:
   setsponges:
     permission: kojogame.setsponges
     permission-message: §cあなたにはこのコマンドを実行する権限がありません！
+  setspawn:
+    permission: kojogame.setspawn
+    permission-message: §cあなたにはこのコマンドを実行する権限がありません！
   gm:
     permission: kojogame.GM
     permission-message: §cあなたにはこのコマンドを実行する権限がありません！
