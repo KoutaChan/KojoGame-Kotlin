@@ -20,12 +20,12 @@ object Start : CommandExecutor {
         if (sender is Player) {
             var Timer = 11
             if (GameState.GameState == 0) {
+                GameState(1)
                 object : BukkitRunnable() {
                     override fun run() {
                         if (0 < Timer) {
                             Timer--
                             if (Timer == 10) {
-                                GameState(1)
                                 Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
                             } else {
                                 Bukkit.broadcastMessage("§lゲームは開始されました！")
