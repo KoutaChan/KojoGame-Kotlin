@@ -26,25 +26,7 @@ object Start : CommandExecutor {
                             Timer--
                             if (Timer == 10) {
                                 GameState(1)
-                                Bukkit.broadcastMessage("§aゲームは10秒後に開始されます！")
-                            } else if (Timer == 9) {
-                                Bukkit.broadcastMessage("§aゲームは9秒後に開始されます！")
-                            } else if (Timer == 8) {
-                                Bukkit.broadcastMessage("§aゲームは8秒後に開始されます！")
-                            } else if (Timer == 7) {
-                                Bukkit.broadcastMessage("§aゲームは7秒後に開始されます！")
-                            } else if (Timer == 6) {
-                                Bukkit.broadcastMessage("§eゲームは6秒後に開始されます！")
-                            } else if (Timer == 5) {
-                                Bukkit.broadcastMessage("§eゲームは5秒後に開始されます！")
-                            } else if (Timer == 4) {
-                                Bukkit.broadcastMessage("§eゲームは4秒後に開始されます！")
-                            } else if (Timer == 3) {
-                                Bukkit.broadcastMessage("§cゲームは3秒後に開始されます！")
-                            } else if (Timer == 2) {
-                                Bukkit.broadcastMessage("§cゲームは2秒後に開始されます！")
-                            } else if (Timer == 1) {
-                                Bukkit.broadcastMessage("§cゲームは1秒後に開始されます！")
+                                Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
                             } else {
                                 Bukkit.broadcastMessage("§lゲームは開始されました！")
                                 GameState(2)
