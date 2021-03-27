@@ -23,7 +23,7 @@ object Start : CommandExecutor {
                 GameState(1)
                 object : BukkitRunnable() {
                     override fun run() {
-                        if (0 < Timer) {
+                        if (1 < Timer) {
                             Timer--
                             Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
                         } else {

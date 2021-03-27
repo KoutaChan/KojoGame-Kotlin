@@ -1,10 +1,12 @@
 package kojogame.koutachan.model
 
+import kojogame.koutachan.KojoGame.Companion.plugin
 import kojogame.koutachan.util.DiamondSponges
 import kojogame.koutachan.util.GameState
 import kojogame.koutachan.util.GoldSponges
 import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 
 
 fun BlueWin() {
@@ -13,14 +15,19 @@ fun BlueWin() {
     IronSponges(false)
     GoldSponges(false)
     DiamondSponges(false)
+    GameState(3)
+    EndTimer()
 }
 fun RedWin() {
     for(p in Bukkit.getOnlinePlayers())
         p.sendTitle("§c赤チームの勝利","§7時間切れのため勝利")
+    for(p in Bukkit.getOnlinePlayers())
+        p.playSound(p.location, Sound.ENTITY_WITHER_SPAWN,20F,1F)
     IronSponges(false)
     GoldSponges(false)
     DiamondSponges(false)
-    GameState(2)
+    GameState(3)
+    EndTimer()
 }
 
 fun BlueWinChecker() {
@@ -31,4 +38,10 @@ fun BlueWinChecker() {
             }
         }
     }
+}
+fun EndTimer() {
+    Bukkit.broadcastMessage("§e10秒後にロビーに戻ります")
+    Bukkit.getScheduler().runTaskLater(plugin, Runnable {
+        GameState(0)
+    }, 20 * 10)
 }
