@@ -24,8 +24,8 @@ object scoreboard : Listener {
             obj.getScore("").setScore(9)
             obj.getScore("${ChatColor.BOLD}").setScore(7)
             obj.getScore("${ChatColor.RESET}").setScore(3)
-            obj.getScore(" §c赤チーム ➤ 0").setScore(2)
-            obj.getScore(" §9青チーム ➤ 0").setScore(1)
+            obj.getScore(" §c赤チーム ➤ 未実装").setScore(2)
+            obj.getScore(" §9青チーム ➤ 未実装").setScore(1)
             obj.getScore("${ChatColor.UNDERLINE}").setScore(0)
             GameStateUpdate() //Line 8
             IronUpdate() //Line 6

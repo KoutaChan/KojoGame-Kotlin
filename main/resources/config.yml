@@ -10,11 +10,10 @@ diamond:
 - 3
 - 4
 - 5
-RedSpawn:
-- 0
-- 5
-- 0
-BlueSpawn:
-- 0
-- 5
-- 0
+Lobby:
+  world:
+  x:
+  y:
+  z:
+  pitch:
+  yaw:

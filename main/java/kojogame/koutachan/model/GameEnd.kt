@@ -9,6 +9,8 @@ import org.bukkit.Bukkit
 import org.bukkit.Bukkit.getOnlinePlayers
 import org.bukkit.Location
 import org.bukkit.Sound
+import org.bukkit.configuration.file.YamlConfiguration
+import java.io.File
 
 
 fun BlueWin() {
@@ -44,13 +46,16 @@ fun BlueWinChecker() {
 fun EndTimer() {
     Bukkit.broadcastMessage("§e10秒後にロビーに戻ります")
     Bukkit.getScheduler().runTaskLater(plugin, Runnable {
+        val File = File("plugins/KojoGame/config.yml")
+        val config = YamlConfiguration.loadConfiguration(File)
         var location = Location(
-            Bukkit.getWorld("world"),
-            1.0,
-            2.0,
-            3.0
+            //plugin.config.get(getWorld("Lobby.world").toString()) as World?,
+            Bukkit.getWorld("${config.get("Lobby.world")}"),
+            config.getDouble("Lobby.x"),
+            config.getDouble("Lobby.y"),
+            config.getDouble("Lobby.z"),
         )
-        Bukkit.broadcastMessage("$location")
+        Bukkit.broadcastMessage("$location ${Bukkit.getWorld("world")}")
         for(p in getOnlinePlayers())
             p.teleport(location)
         GameState(0)

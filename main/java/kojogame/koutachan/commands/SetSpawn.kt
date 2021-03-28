@@ -1,5 +1,6 @@
 package kojogame.koutachan.commands
 
+import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -24,6 +25,15 @@ object SetSpawn : CommandExecutor {
                     config.set("BlueSpawn", listOf(X, Y, Z))
                     config.save(File)
                     sender.sendMessage("§9B:§f $X , $Y , $Z")
+                } else if (args[0] == "lobby") {
+                    config.set("Lobby.world", sender.world.name)
+                    config.set("Lobby.x", sender.getLocation().x)
+                    config.set("Lobby.y", sender.getLocation().y)
+                    config.set("Lobby.z", sender.getLocation().z)
+                    config.set("Lobby.pitch", sender.getLocation().pitch)
+                    config.set("Lobby.yaw", sender.getLocation().yaw)
+                    config.save(File)
+                    sender.sendMessage("テスト ${sender.getWorld()}")
                 }
             }
         }
