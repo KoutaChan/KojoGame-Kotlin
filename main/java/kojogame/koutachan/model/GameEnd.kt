@@ -6,6 +6,8 @@ import kojogame.koutachan.util.GameState
 import kojogame.koutachan.util.GoldSponges
 import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
+import org.bukkit.Bukkit.getOnlinePlayers
+import org.bukkit.Location
 import org.bukkit.Sound
 
 
@@ -42,6 +44,15 @@ fun BlueWinChecker() {
 fun EndTimer() {
     Bukkit.broadcastMessage("§e10秒後にロビーに戻ります")
     Bukkit.getScheduler().runTaskLater(plugin, Runnable {
+        var location = Location(
+            Bukkit.getWorld("world"),
+            1.0,
+            2.0,
+            3.0
+        )
+        Bukkit.broadcastMessage("$location")
+        for(p in getOnlinePlayers())
+            p.teleport(location)
         GameState(0)
     }, 20 * 10)
 }
