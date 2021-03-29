@@ -3,7 +3,7 @@ package kojogame.koutachan.commands
 import kojogame.koutachan.KojoGame
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
-import net.md_5.bungee.api.ChatColor
+import org.bukkit.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.command.Command

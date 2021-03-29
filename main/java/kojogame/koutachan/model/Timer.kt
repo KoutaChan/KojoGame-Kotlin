@@ -8,7 +8,7 @@ fun Timer(timer: Int) {
     var Timer = timer
     object : BukkitRunnable() {
         override fun run() {
-            if (0 < Timer) {
+            if (1 < Timer) {
                 Timer--
                 kojogame.koutachan.util.Timer(Timer)
                 if (GameState != 2) {
