@@ -46,8 +46,3 @@ object SetSpawn : CommandExecutor {
     }
 }
 
-private operator fun Float.plus(float: Float.Companion): Any? {
-
-return null
-}
-
