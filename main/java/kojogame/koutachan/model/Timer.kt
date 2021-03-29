@@ -1,6 +1,7 @@
 package kojogame.koutachan.model
 
 import kojogame.koutachan.KojoGame.Companion.plugin
+import kojogame.koutachan.util.GameState.Companion.GameState
 import org.bukkit.scheduler.BukkitRunnable
 
 fun Timer(timer: Int) {
@@ -10,6 +11,9 @@ fun Timer(timer: Int) {
             if (0 < Timer) {
                 Timer--
                 kojogame.koutachan.util.Timer(Timer)
+                if (GameState != 2) {
+                    cancel()
+                }
             } else {
                 cancel()
                 RedWin()

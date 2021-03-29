@@ -3,6 +3,7 @@ package kojogame.koutachan.commands
 import kojogame.koutachan.KojoGame
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
+import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.command.Command
@@ -26,7 +27,13 @@ object Start : CommandExecutor {
                     override fun run() {
                         if (1 < Timer) {
                             Timer--
-                            Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
+                            Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます・・・")
+                            if (6 > Timer) {
+                                for(p in Bukkit.getOnlinePlayers())
+                                    p.sendTitle("${ChatColor.RED}$Timer","")
+                                for(p in Bukkit.getOnlinePlayers())
+                                    p.playSound(p.getLocation(),Sound.BLOCK_NOTE_HAT,100F,1F)
+                            }
                         } else {
                             Bukkit.broadcastMessage("§lゲームは開始されました！")
                             for(p in Bukkit.getOnlinePlayers())
