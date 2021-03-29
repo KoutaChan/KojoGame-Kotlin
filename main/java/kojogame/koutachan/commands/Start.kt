@@ -4,6 +4,7 @@ import kojogame.koutachan.KojoGame
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -28,6 +29,8 @@ object Start : CommandExecutor {
                             Bukkit.broadcastMessage("§aゲームは§l$Timer§a秒後に開始されます！")
                         } else {
                             Bukkit.broadcastMessage("§lゲームは開始されました！")
+                            for(p in Bukkit.getOnlinePlayers())
+                                p.playSound(p.location, Sound.ENTITY_WITHER_SPAWN,20F,1F)
                             GameState(2)
                             Timer(600)
                             cancel()

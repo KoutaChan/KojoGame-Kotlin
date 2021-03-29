@@ -14,17 +14,22 @@ object SetSpawn : CommandExecutor {
             if (args?.isNotEmpty()!!) {
                 val File = File("plugins/KojoGame/config.yml")
                 val config = YamlConfiguration.loadConfiguration(File)
-                val X = sender.getLocation().x
-                val Y = sender.getLocation().y
-                val Z = sender.getLocation().z
                 if (args[0] == "red") {
-                    config.set("RedSpawn", listOf(X, Y, Z))
+                    config.set("Red.world", sender.world.name)
+                    config.set("Red.x", sender.getLocation().x)
+                    config.set("Red.y", sender.getLocation().y)
+                    config.set("Red.z", sender.getLocation().z)
+                    config.set("Red.pitch", sender.getLocation().pitch)
+                    config.set("Red.yaw", sender.getLocation().yaw)
                     config.save(File)
-                    sender.sendMessage("§cR:§f $X , $Y , $Z")
                 } else if (args[0] == "blue") {
-                    config.set("BlueSpawn", listOf(X, Y, Z))
+                    config.set("Blue.world", sender.world.name)
+                    config.set("Blue.x", sender.getLocation().x)
+                    config.set("Blue.y", sender.getLocation().y)
+                    config.set("Blue.z", sender.getLocation().z)
+                    config.set("Blue.pitch", sender.getLocation().pitch)
+                    config.set("Blue.yaw", sender.getLocation().yaw)
                     config.save(File)
-                    sender.sendMessage("§9B:§f $X , $Y , $Z")
                 } else if (args[0] == "lobby") {
                     config.set("Lobby.world", sender.world.name)
                     config.set("Lobby.x", sender.getLocation().x)
@@ -39,5 +44,10 @@ object SetSpawn : CommandExecutor {
         }
         return true
     }
+}
+
+private operator fun Float.plus(float: Float.Companion): Any? {
+
+return null
 }
 

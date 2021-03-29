@@ -1,11 +1,8 @@
 package kojogame.koutachan.event
 
-import kojogame.koutachan.model.BlueWinChecker
-import kojogame.koutachan.util.*
-import org.bukkit.Bukkit
+import kojogame.koutachan.util.GameState
 import org.bukkit.GameMode
 import org.bukkit.Material
-import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -28,34 +25,19 @@ object event : Listener {
     }
 
     @EventHandler
-    fun BlockBreakEvent(e: BlockBreakEvent) = //雑でごり押しのコード
+    fun BlockBreakEvent(e: BlockBreakEvent) {
         if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
                 if (GameState.GameState == 2) {
-                    val config = YamlConfiguration.loadConfiguration(File)
-                    if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("iron"))) { //XYZとconfigから比較
-                        Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
-                        IronSponges(true)
-                        BlueWinChecker()
-                        e.isCancelled = false //ごり押しするためにfalse
-                    } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("gold"))) {
-                        Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
-                        GoldSponges(true)
-                        BlueWinChecker()
-                        e.isCancelled = false
-                    } else if (listOf(e.block.x, e.block.y, e.block.z) == (config.get("diamond"))) {
-                        Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
-                        DiamondSponges(true)
-                        BlueWinChecker()
-                        e.isCancelled = false
-                    } else
-                        e.isCancelled = true
-                } else
-                    e.isCancelled = true
-            } else
-                e.isCancelled = true
+                    iron(e)
+                    gold(e)
+                    diamond(e)
+                } else e.isCancelled = true
+            } else e.isCancelled = true
         }
+    }
+
 
     @EventHandler
     fun onFoodLevelChange(e: FoodLevelChangeEvent) {

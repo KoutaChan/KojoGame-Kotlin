@@ -20,7 +20,7 @@ object scoreboard : Listener {
             val time = LocalDateTime.now()
             obj.setDisplaySlot(DisplaySlot.SIDEBAR)
             obj.setDisplayName("${ChatColor.YELLOW}[ Kojo Game (${Bukkit.getOnlinePlayers().size}) ]")
-            obj.getScore("§7${time.year}/${time.month.value}/${time.dayOfMonth} §80.2β").setScore(10) //${time.hour}:${time.minute}:${time.second}
+            obj.getScore("§7${time.year}/${time.month.value}/${time.dayOfMonth} §80.3β").setScore(10) //${time.hour}:${time.minute}:${time.second}
             obj.getScore("").setScore(9)
             obj.getScore("${ChatColor.BOLD}").setScore(7)
             obj.getScore("${ChatColor.RESET}").setScore(3)

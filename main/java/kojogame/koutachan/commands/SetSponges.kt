@@ -14,23 +14,29 @@ object cmdSponges : CommandExecutor {
             if (args?.isNotEmpty()!!) {
                 val File = File("plugins/KojoGame/config.yml")
                 val config = YamlConfiguration.loadConfiguration(File)
-                val TargetBlockX = sender.getTargetBlock(null,15).getLocation().blockX //valで保存しなくてもいいのだが、見にくくなるためvalで保存
-                val TargetBlockY = sender.getTargetBlock(null,15).getLocation().blockY
-                val TargetBlockZ = sender.getTargetBlock(null,15).getLocation().blockZ
                 if (args[0] == "iron") {
-                    config.set("iron",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
-                    config.save(File) //もしかして:ノリで追加したけどいらない？
-                    sender.sendMessage("${ChatColor.WHITE}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ")
+                    config.set("iron.world","${sender.world.name}")
+                    config.set("iron.x","${sender.getTargetBlock(null,15).x}")
+                    config.set("iron.y","${sender.getTargetBlock(null,15).y}")
+                    config.set("iron.z","${sender.getTargetBlock(null,15).z}")
+                    config.save(File)
+                    sender.sendMessage("${ChatColor.WHITE}保存しました！")
                 } else {
                     if (args[0] == "gold") {
-                        config.set("gold",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
+                        config.set("gold.world","${sender.world.name}")
+                        config.set("gold.x","${sender.getTargetBlock(null,15).x}")
+                        config.set("gold.y","${sender.getTargetBlock(null,15).y}")
+                        config.set("gold.z","${sender.getTargetBlock(null,15).z}")
                         config.save(File)
-                        sender.sendMessage("${ChatColor.GOLD}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ")
+                        sender.sendMessage("${ChatColor.GOLD}保存しました！")
                     } else {
                         if (args[0] == "diamond") {
-                            config.set("diamond",listOf(TargetBlockX,TargetBlockY,TargetBlockZ))
+                            config.set("diamond.world","${sender.world.name}")
+                            config.set("diamond.x","${sender.getTargetBlock(null,15).x}")
+                            config.set("diamond.y","${sender.getTargetBlock(null,15).y}")
+                            config.set("diamond.z","${sender.getTargetBlock(null,15).z}")
                             config.save(File)
-                            sender.sendMessage("${ChatColor.AQUA}保存しました！ \nX:$TargetBlockX \nY:$TargetBlockY \nZ:$TargetBlockZ")
+                            sender.sendMessage("${ChatColor.AQUA}保存しました！")
                         } else {
                             sender.sendMessage("${ChatColor.RED}使い方: /setsponges [iron / gold / diamond]")
                         }
