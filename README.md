@@ -1,6 +1,3 @@
-# KojoGame-Kotlin
-世界一雑コード
+# KojoGame-Kotlin (1.12.2)
 
-# how to compile
-
-maven (https://maven.apache.org/)
+後で1.8用に書き換えます (サウンドなど...)
