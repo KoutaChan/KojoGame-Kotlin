@@ -21,6 +21,7 @@ object SetSpawn : CommandExecutor {
                     config.set("Red.yaw", sender.getLocation().yaw)
                     config.set("Red.pitch", sender.getLocation().pitch)
                     config.save(File)
+                    sender.sendMessage("config.ymlに書き込みました！")
                 } else if (args[0] == "blue") {
                     config.set("Blue.world", sender.world.name)
                     config.set("Blue.x", sender.getLocation().x)
@@ -29,6 +30,7 @@ object SetSpawn : CommandExecutor {
                     config.set("Blue.yaw", sender.getLocation().yaw)
                     config.set("Blue.pitch", sender.getLocation().pitch)
                     config.save(File)
+                    sender.sendMessage("config.ymlに書き込みました！")
                 } else if (args[0] == "lobby") {
                     config.set("Lobby.world", sender.world.name)
                     config.set("Lobby.x", sender.getLocation().x)
@@ -37,7 +39,7 @@ object SetSpawn : CommandExecutor {
                     config.set("Lobby.yaw", sender.getLocation().yaw)
                     config.set("Lobby.pitch", sender.getLocation().pitch)
                     config.save(File)
-                    sender.sendMessage("テスト ${sender.getWorld()}")
+                    sender.sendMessage("config.ymlに書き込みました！")
                 }
             }
         }

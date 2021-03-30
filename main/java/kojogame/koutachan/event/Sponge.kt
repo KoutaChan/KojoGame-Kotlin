@@ -22,6 +22,7 @@ fun iron(e: BlockBreakEvent) {
                     IronSponges(true)
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
+                    e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)
                 }else e.isCancelled = true
             }else e.isCancelled = true
         }else e.isCancelled = true
@@ -38,6 +39,7 @@ fun gold(e: BlockBreakEvent) {
                     GoldSponges(true)
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
+                    e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)
                 }else e.isCancelled = true
             }else e.isCancelled = true
         }else e.isCancelled = true
@@ -54,6 +56,7 @@ fun diamond(e: BlockBreakEvent) {
                     DiamondSponges(true)
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
+                    e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)
                 }else e.isCancelled = true
             }else e.isCancelled = true
         }else e.isCancelled = true
