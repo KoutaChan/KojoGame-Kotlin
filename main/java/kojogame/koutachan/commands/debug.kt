@@ -1,8 +1,8 @@
 package kojogame.koutachan.commands
 
+import kojogame.koutachan.event.SpongeParticle
 import kojogame.koutachan.model.BlueWin
 import kojogame.koutachan.model.RedWin
-import kojogame.koutachan.model.SpongeParticle
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
 import org.bukkit.command.Command

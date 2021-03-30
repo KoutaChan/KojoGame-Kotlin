@@ -1,6 +1,7 @@
 package kojogame.koutachan.model
 
 import kojogame.koutachan.KojoGame.Companion.plugin
+import kojogame.koutachan.event.ResetSponges
 import kojogame.koutachan.util.DiamondSponges
 import kojogame.koutachan.util.GameState
 import kojogame.koutachan.util.GoldSponges
@@ -54,6 +55,7 @@ fun EndTimer() {
             config.getDouble("Lobby.pitch").toFloat())
         for(p in getOnlinePlayers())
             p.teleport(location)
+        ResetSponges()
         GameState(0)
     }, 20 * 10)
 }

@@ -1,8 +1,9 @@
 package kojogame.koutachan
 
 import kojogame.koutachan.commands.*
+import kojogame.koutachan.event.ResetSponges
+import kojogame.koutachan.event.SpongeParticle
 import kojogame.koutachan.event.event
-import kojogame.koutachan.model.SpongeParticle
 import kojogame.koutachan.model.scoreboard
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -21,6 +22,7 @@ class KojoGame : JavaPlugin() {
         server.pluginManager.registerEvents(event, this)
         scoreboard.ScoreBoardUpdate()
         SpongeParticle()
+        ResetSponges()
         saveDefaultConfig()
     }
 

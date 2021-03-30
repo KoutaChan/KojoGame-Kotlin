@@ -53,7 +53,7 @@ object event : Listener {
     @EventHandler
     fun EntityDamageEvent(e: EntityDamageEvent) {
         if (e.entityType == EntityType.PLAYER) {
-            if (GameState.GameState == 0) {
+            if (GameState.GameState != 2) {
                 e.isCancelled = true
             }
         }
