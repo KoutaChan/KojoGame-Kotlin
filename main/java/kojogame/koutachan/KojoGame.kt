@@ -2,6 +2,7 @@ package kojogame.koutachan
 
 import kojogame.koutachan.commands.*
 import kojogame.koutachan.event.event
+import kojogame.koutachan.model.SpongeParticle
 import kojogame.koutachan.model.scoreboard
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -19,6 +20,7 @@ class KojoGame : JavaPlugin() {
         getCommand("gm").executor = SimpleGameMode
         server.pluginManager.registerEvents(event, this)
         scoreboard.ScoreBoardUpdate()
+        SpongeParticle()
         saveDefaultConfig()
     }
 

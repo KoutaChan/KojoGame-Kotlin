@@ -2,6 +2,7 @@ package kojogame.koutachan.commands
 
 import kojogame.koutachan.model.BlueWin
 import kojogame.koutachan.model.RedWin
+import kojogame.koutachan.model.SpongeParticle
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
 import org.bukkit.command.Command
@@ -36,6 +37,8 @@ object debug : CommandExecutor {
                 RedWin()
             } else if (args[0] == "7") {
                 Timer(60)
+            } else if (args[0] == "8") {
+                SpongeParticle()
             }
         }
         return true
