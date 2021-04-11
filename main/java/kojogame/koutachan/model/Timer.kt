@@ -1,7 +1,8 @@
 package kojogame.koutachan.model
 
 import kojogame.koutachan.KojoGame.Companion.plugin
-import kojogame.koutachan.util.GameState.Companion.GameState
+import kojogame.koutachan.State
+import kojogame.koutachan.util.GameState
 import org.bukkit.scheduler.BukkitRunnable
 
 fun Timer(timer: Int) {
@@ -11,7 +12,7 @@ fun Timer(timer: Int) {
             if (1 < Timer) {
                 Timer--
                 kojogame.koutachan.util.Timer(Timer)
-                if (GameState != 2) {
+                if (State != GameState.PLAYING) {
                     cancel()
                 }
             } else {

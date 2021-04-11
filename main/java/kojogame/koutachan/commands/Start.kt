@@ -1,10 +1,11 @@
 package kojogame.koutachan.commands
 
 import kojogame.koutachan.KojoGame
+import kojogame.koutachan.State
 import kojogame.koutachan.model.Timer
 import kojogame.koutachan.util.GameState
-import org.bukkit.ChatColor
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Sound
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -21,8 +22,8 @@ object Start : CommandExecutor {
     ): Boolean {
         if (sender is Player) {
             var Timer = 11
-            if (GameState.GameState == 0) {
-                GameState(1)
+            if (State == GameState.LOBBY) {
+                State = GameState.STARTING
                 object : BukkitRunnable() {
                     override fun run() {
                         if (1 < Timer) {
@@ -38,7 +39,7 @@ object Start : CommandExecutor {
                             Bukkit.broadcastMessage("§lゲームは開始されました！")
                             for(p in Bukkit.getOnlinePlayers())
                                 p.playSound(p.location, Sound.ENTITY_WITHER_SPAWN,20F,1F)
-                            GameState(2)
+                            State = GameState.PLAYING
                             Timer(600)
                             cancel()
                         }

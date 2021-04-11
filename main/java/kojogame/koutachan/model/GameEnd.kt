@@ -1,6 +1,7 @@
 package kojogame.koutachan.model
 
 import kojogame.koutachan.KojoGame.Companion.plugin
+import kojogame.koutachan.State
 import kojogame.koutachan.event.ResetSponges
 import kojogame.koutachan.util.DiamondSponges
 import kojogame.koutachan.util.GameState
@@ -19,7 +20,6 @@ fun BlueWin() {
     IronSponges(false)
     GoldSponges(false)
     DiamondSponges(false)
-    GameState(3)
     EndTimer()
 }
 fun RedWin() {
@@ -28,7 +28,6 @@ fun RedWin() {
     IronSponges(false)
     GoldSponges(false)
     DiamondSponges(false)
-    GameState(3)
     EndTimer()
 }
 fun BlueWinChecker() {
@@ -41,6 +40,7 @@ fun BlueWinChecker() {
     }
 }
 fun EndTimer() {
+    State = GameState.ENDING
     Bukkit.broadcastMessage("§e10秒後にロビーに戻ります")
     Bukkit.getScheduler().runTaskLater(plugin, Runnable {
         Bukkit.broadcastMessage("§7ロビーにテレポートしています...")
@@ -56,6 +56,6 @@ fun EndTimer() {
         for(p in getOnlinePlayers())
             p.teleport(location)
         ResetSponges()
-        GameState(0)
+        State = GameState.LOBBY
     }, 20 * 10)
 }

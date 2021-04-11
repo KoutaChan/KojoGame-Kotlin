@@ -1,0 +1,36 @@
+iron:
+  world: world
+  x: '0'
+  y: '0'
+  z: '0'
+gold:
+  world: world
+  x: '0'
+  y: '0'
+  z: '0'
+diamond:
+  world: world
+  x: '0'
+  y: '0'
+  z: '0'
+Red:
+  world: world
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  pitch: 0.0
+  yaw: 0.0
+Lobby:
+  world: world
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  pitch: 0.0
+  yaw: 0.0
+Blue:
+  world: world
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  pitch: 0.0
+  yaw: 0.0

@@ -3,6 +3,8 @@ package kojogame.koutachan.model
 
 
 import kojogame.koutachan.KojoGame.Companion.plugin
+import kojogame.koutachan.State
+import kojogame.koutachan.util.GameState
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.Listener
@@ -34,13 +36,13 @@ object scoreboard : Listener {
     }, 0, 10) //多分20だと秒数が表示されないので
     }
     fun GameStateUpdate() {
-        if (kojogame.koutachan.util.GameState.GameState == 0) {
+        if (State == GameState.LOBBY) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム待機中").setScore(8)
-        } else if (kojogame.koutachan.util.GameState.GameState == 1) {
+        } else if (State == GameState.STARTING) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム開始中").setScore(8)
-        } else if (kojogame.koutachan.util.GameState.GameState == 2) {
+        } else if (State == GameState.PLAYING) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" 残り時間 » ${kojogame.koutachan.util.Timer.Timer}秒").setScore(8)
-        } else if (kojogame.koutachan.util.GameState.GameState == 3) {
+        } else if (State == GameState.ENDING) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" » ゲーム終了").setScore(8)
         }
     }

@@ -1,5 +1,6 @@
 package kojogame.koutachan.event
 
+import kojogame.koutachan.State
 import kojogame.koutachan.util.GameState
 import org.bukkit.GameMode
 import org.bukkit.Material
@@ -29,7 +30,7 @@ object event : Listener {
         if (e.player.gameMode == GameMode.CREATIVE) {
         } else {
             if (e.block.type == Material.SPONGE) {
-                if (GameState.GameState == 2) {
+                if (State == GameState.PLAYING) {
                     iron(e)
                     gold(e)
                     diamond(e)
@@ -53,7 +54,7 @@ object event : Listener {
     @EventHandler
     fun EntityDamageEvent(e: EntityDamageEvent) {
         if (e.entityType == EntityType.PLAYER) {
-            if (GameState.GameState != 2) {
+            if (State != GameState.PLAYING) {
                 e.isCancelled = true
             }
         }

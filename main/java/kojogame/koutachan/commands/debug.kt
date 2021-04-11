@@ -1,5 +1,6 @@
 package kojogame.koutachan.commands
 
+import kojogame.koutachan.State
 import kojogame.koutachan.event.SpongeParticle
 import kojogame.koutachan.model.BlueWin
 import kojogame.koutachan.model.RedWin
@@ -18,18 +19,14 @@ object debug : CommandExecutor {
     ): Boolean {
         if (args?.isNotEmpty()!!) {
             if (args[0] == "0") {
-                sender?.sendMessage("${GameState.GameState}")
+                sender?.sendMessage("${State}")
             } else if (args[0] == "1") {
-                GameState(0)
                 sender?.sendMessage(":ok_hand:")
             } else if (args[0] == "2") {
-                GameState(1)
                 sender?.sendMessage(":ok_hand:")
             } else if (args[0] == "3") {
-                GameState(2)
                 sender?.sendMessage(":ok_hand:")
             } else if (args[0] == "4") {
-                GameState(3)
                 sender?.sendMessage(":ok_hand:")
             } else if (args[0] == "5") {
                 BlueWin()
