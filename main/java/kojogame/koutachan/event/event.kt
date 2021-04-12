@@ -19,16 +19,14 @@ object event : Listener {
 
     @EventHandler
     fun BlockPlaceEvent(e: BlockPlaceEvent) {
-        if (e.player.gameMode == GameMode.CREATIVE) {
-        } else {
+        if (e.player.gameMode != GameMode.CREATIVE) {
             e.isCancelled = true //キャンセル
         }
     }
 
     @EventHandler
     fun BlockBreakEvent(e: BlockBreakEvent) {
-        if (e.player.gameMode == GameMode.CREATIVE) {
-        } else {
+        if (e.player.gameMode != GameMode.CREATIVE) {
             if (e.block.type == Material.SPONGE) {
                 if (State == GameState.PLAYING) {
                     iron(e)

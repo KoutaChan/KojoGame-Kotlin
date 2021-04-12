@@ -5,9 +5,10 @@ import kojogame.koutachan.event.ResetSponges
 import kojogame.koutachan.event.SpongeParticle
 import kojogame.koutachan.event.event
 import kojogame.koutachan.model.scoreboard.ScoreBoardUpdate
+import kojogame.koutachan.util.GameState
 import org.bukkit.plugin.java.JavaPlugin
 
-var State = kojogame.koutachan.util.GameState.LOBBY
+var State = GameState.LOBBY
 var Timer = 0
 var IronState = false
 var GoldState = false
