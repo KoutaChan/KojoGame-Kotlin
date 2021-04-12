@@ -1,12 +1,12 @@
 package kojogame.koutachan.model
 
+import kojogame.koutachan.DiamondState
+import kojogame.koutachan.GoldState
+import kojogame.koutachan.IronState
 import kojogame.koutachan.KojoGame.Companion.plugin
 import kojogame.koutachan.State
 import kojogame.koutachan.event.ResetSponges
-import kojogame.koutachan.util.DiamondSponges
 import kojogame.koutachan.util.GameState
-import kojogame.koutachan.util.GoldSponges
-import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
 import org.bukkit.Bukkit.getOnlinePlayers
 import org.bukkit.Location
@@ -17,23 +17,17 @@ import java.io.File
 fun BlueWin() {
     for (p in getOnlinePlayers())
         p.sendTitle("§9青チームの勝利","§7スポンジが破壊されたため勝利")
-    IronSponges(false)
-    GoldSponges(false)
-    DiamondSponges(false)
     EndTimer()
 }
 fun RedWin() {
     for(p in getOnlinePlayers())
         p.sendTitle("§c赤チームの勝利","§7時間切れのため勝利")
-    IronSponges(false)
-    GoldSponges(false)
-    DiamondSponges(false)
     EndTimer()
 }
 fun BlueWinChecker() {
-    if (IronSponges.IronSponges == true) {
-        if (GoldSponges.GoldSponges == true) {
-            if (DiamondSponges.DiamondSponges == true) {
+    if (IronState == true) {
+        if (GoldState == true) {
+            if (DiamondState == true) {
                 BlueWin()
             }
         }
@@ -53,6 +47,9 @@ fun EndTimer() {
             config.getDouble("Lobby.z"),
             config.getDouble("Lobby.yaw").toFloat(),
             config.getDouble("Lobby.pitch").toFloat())
+        IronState = false
+        GoldState = false
+        DiamondState = false
         for(p in getOnlinePlayers())
             p.teleport(location)
         ResetSponges()

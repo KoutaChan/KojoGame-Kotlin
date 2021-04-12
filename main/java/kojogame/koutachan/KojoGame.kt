@@ -9,6 +9,9 @@ import org.bukkit.plugin.java.JavaPlugin
 
 var State = kojogame.koutachan.util.GameState.LOBBY
 var Timer = 0
+var IronState = false
+var GoldState = false
+var DiamondState = false
 
 class KojoGame : JavaPlugin() {
     companion object {

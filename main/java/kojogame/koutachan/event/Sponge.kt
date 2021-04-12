@@ -1,10 +1,10 @@
 package kojogame.koutachan.event
 
+import kojogame.koutachan.DiamondState
+import kojogame.koutachan.GoldState
+import kojogame.koutachan.IronState
 import kojogame.koutachan.KojoGame
 import kojogame.koutachan.model.BlueWinChecker
-import kojogame.koutachan.util.DiamondSponges
-import kojogame.koutachan.util.GoldSponges
-import kojogame.koutachan.util.IronSponges
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
@@ -19,7 +19,7 @@ fun iron(e: BlockBreakEvent) {
             if ("${e.block.y}" == config.get("iron.y")) {
                 if ("${e.block.z}" == config.get("iron.z")) {
                     Bukkit.broadcastMessage("§f鉄のスポンジが破壊されました")
-                    IronSponges(true)
+                    IronState = true
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
                     e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)
@@ -36,7 +36,7 @@ fun gold(e: BlockBreakEvent) {
             if ("${e.block.y}" == config.get("gold.y")) {
                 if ("${e.block.z}" == config.get("gold.z")) {
                     Bukkit.broadcastMessage("§6金のスポンジが破壊されました")
-                    GoldSponges(true)
+                    GoldState = true
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
                     e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)
@@ -53,7 +53,7 @@ fun diamond(e: BlockBreakEvent) {
             if ("${e.block.y}" == config.get("diamond.y")) {
                 if ("${e.block.z}" == config.get("diamond.z")) {
                     Bukkit.broadcastMessage("§bダイヤのスポンジが破壊されました")
-                    DiamondSponges(true)
+                    DiamondState = true
                     BlueWinChecker()
                     e.block.setType(Material.BEDROCK)
                     e.player.spawnParticle(Particle.EXPLOSION_HUGE, e.block.location ,10)

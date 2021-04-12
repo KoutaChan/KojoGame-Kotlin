@@ -2,6 +2,9 @@ package kojogame.koutachan.model
 
 
 
+import kojogame.koutachan.DiamondState
+import kojogame.koutachan.GoldState
+import kojogame.koutachan.IronState
 import kojogame.koutachan.KojoGame.Companion.plugin
 import kojogame.koutachan.State
 import kojogame.koutachan.util.GameState
@@ -47,23 +50,23 @@ object scoreboard : Listener {
         }
     }
     fun IronUpdate() {
-        if (kojogame.koutachan.util.IronSponges.IronSponges == true) {
+        if (IronState == true) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" スポンジ(1) » §c破壊されています").setScore(6)
-        } else if (kojogame.koutachan.util.IronSponges.IronSponges == false) {
+        } else if (IronState == false) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" スポンジ(1) » §a破壊されていません").setScore(6)
         }
     }
     fun GoldUpdate() {
-        if (kojogame.koutachan.util.GoldSponges.GoldSponges == true) {
+        if (GoldState == true) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" §6スポンジ(2) » §c破壊されています").setScore(5)
-        } else if (kojogame.koutachan.util.GoldSponges.GoldSponges == false) {
+        } else if (GoldState == false) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" §6スポンジ(2) » §a破壊されていません").setScore(5)
         }
     }
     fun DiamondUpdate() {
-        if (kojogame.koutachan.util.DiamondSponges.DiamondSponges == true) {
+        if (DiamondState == true) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" §bスポンジ(3) » §c破壊されています").setScore(4)
-        } else if (kojogame.koutachan.util.DiamondSponges.DiamondSponges == false) {
+        } else if (DiamondState == false) {
             Bukkit.getScoreboardManager().mainScoreboard.getObjective("KojoGame").getScore(" §bスポンジ(3) » §a破壊されていません").setScore(4)
         }
     }
