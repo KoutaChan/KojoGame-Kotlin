@@ -8,6 +8,7 @@ import kojogame.koutachan.model.scoreboard.ScoreBoardUpdate
 import org.bukkit.plugin.java.JavaPlugin
 
 var State = kojogame.koutachan.util.GameState.LOBBY
+var Timer = 0
 
 class KojoGame : JavaPlugin() {
     companion object {
